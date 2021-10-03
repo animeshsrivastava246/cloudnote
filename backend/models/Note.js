@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    },
     //title:  String, // String is shorthand for {type: String}
     title: {
         type: String,
