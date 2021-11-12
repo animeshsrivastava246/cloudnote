@@ -2,6 +2,7 @@ import './App.css';
 import Home from './components/Home';
 import About from './components/About';
 import Navbar from './components/Navbar';
+import { Alert } from './components/Alert';
 import NoteState from './context/notes/NoteState';
 import {
   BrowserRouter as Router,
@@ -15,6 +16,7 @@ function App() {
       <NoteState>
         <Router>
           <Navbar/>
+          <Alert message="My name is The Devil"/>
           <div className="container">
           <Switch>
               <Route exact path="/"> <Home/> </Route>
