@@ -13,7 +13,7 @@ const NoteState = (props)=>{
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE1NWE2YWVkOWIxNWZiMjQxOTI0MDA5In0sImlhdCI6MTYzMzAwMzM5Nn0.LxFNDrj0fiCcPLPI2Cre65GLxIkxUgAo4gsGuLyuN9M'
+        'auth-token': localStorage.getItem('token')
       }
     });
     const json = await response.json();
@@ -27,7 +27,7 @@ const NoteState = (props)=>{
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE1NWE2YWVkOWIxNWZiMjQxOTI0MDA5In0sImlhdCI6MTYzMzAwMzM5Nn0.LxFNDrj0fiCcPLPI2Cre65GLxIkxUgAo4gsGuLyuN9M'
+        'auth-token': localStorage.getItem('token')
       },
       body: JSON.stringify({title, description, tag}) // body data type must match "Content-Type" header
     });
@@ -41,7 +41,7 @@ const NoteState = (props)=>{
       method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE1NWE2YWVkOWIxNWZiMjQxOTI0MDA5In0sImlhdCI6MTYzMzAwMzM5Nn0.LxFNDrj0fiCcPLPI2Cre65GLxIkxUgAo4gsGuLyuN9M'
+        'auth-token': localStorage.getItem('token')
       }
     });
     const json = await response.json();
@@ -56,11 +56,12 @@ const NoteState = (props)=>{
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE1NWE2YWVkOWIxNWZiMjQxOTI0MDA5In0sImlhdCI6MTYzMzAwMzM5Nn0.LxFNDrj0fiCcPLPI2Cre65GLxIkxUgAo4gsGuLyuN9M'
+        'auth-token': localStorage.getItem('token')
       },
       body: JSON.stringify({title, description, tag}) // body data type must match "Content-Type" header
     });
     const json = await response.json();
+    console.log(json);
     let newNotes = JSON.parse(JSON.stringify(notes));
     //Logic to edit in client
     for (let index = 0; index < newNotes.length; index++) {

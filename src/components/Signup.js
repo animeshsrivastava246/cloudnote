@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = (props) => {
     const [credentials, setCredentials] = useState({name: "",email:"", password:"", cpassword:""})
     let history = useHistory();
     const handleSubmit = async (e) =>{
@@ -20,16 +20,18 @@ const Signup = () => {
             //Save auth token and then redirect
             localStorage.setItem('token', json.authtoken);
             history.push("/");
+            props.showAlert("Account Created", "success")
         }
         else {
-            alert("Invalid Credentials");
+            props.showAlert("Invalid Credentials", "danger")
         }
     }
     const onChange = (e)=>{
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
     return (
-        <div className="container">
+        <div className="container mt-2">
+            <h2><i>Create an Account</i></h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
